@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import QRCode from 'qrcode'
 
 const Sender = () => {
     const [file, setfile] = useState(null)
     const [qrImages, setQrImages] = useState([])
+    const [currentQR, setCurrentQR] = useState(0);
     function uploadHandler(e) {
         setfile(e.target.files[0])
     }
@@ -16,11 +17,31 @@ const Sender = () => {
 
         return btoa(binary);
     }
+    useEffect(() => {
+
+        if (qrImages.length === 0) return;
+
+        const interval = setInterval(() => {
+
+            setCurrentQR(prev => {
+
+                if (prev === qrImages.length - 1)
+                    return 0;
+
+                return prev + 1;
+
+            });
+
+        }, 100);
+
+        return () => clearInterval(interval);
+
+    }, [qrImages]);
     async function submitHandler(e) {
         e.preventDefault()
         const buffer = await file.arrayBuffer();
         const bytes = new Uint8Array(buffer);
-        const CHUNK_SIZE = 900;
+        const CHUNK_SIZE = 700;
         const total = Math.ceil(bytes.length / CHUNK_SIZE);
         const qrChunks = [];
         for (let i = 0; i < total; i++) {
@@ -81,14 +102,18 @@ const Sender = () => {
             </form>
 
 
-            {qrImages.map((qr) => (
-                <div key={qr.payload.index}>
-                    <img src={qr.image} />
-                    <p>
-                        {qr.payload.index + 1} / {qr.payload.total}
-                    </p>
+            {qrImages.length > 0 && (
+                <div>
+                    <img
+                        src={qrImages[currentQR].image}
+                        width={350}
+                    />
+
+                    <h2>
+                        {currentQR + 1} / {qrImages.length}
+                    </h2>
                 </div>
-            ))}
+            )}
         </div>
 
     )
