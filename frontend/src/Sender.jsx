@@ -20,7 +20,7 @@ const Sender = () => {
         e.preventDefault()
         const buffer = await file.arrayBuffer();
         const bytes = new Uint8Array(buffer);
-        const CHUNK_SIZE = 1000;
+        const CHUNK_SIZE = 900;
         const total = Math.ceil(bytes.length / CHUNK_SIZE);
         const qrChunks = [];
         for (let i = 0; i < total; i++) {
