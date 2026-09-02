@@ -246,6 +246,12 @@ Feel free to fork the repository, open issues, or submit pull requests to improv
 
 ---
 
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
 # ⭐ Support
 
 If you found this project interesting, consider giving it a ⭐ on GitHub.
