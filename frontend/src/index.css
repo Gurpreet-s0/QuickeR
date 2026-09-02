@@ -24,3 +24,164 @@
   background: #3b82f6;
   border-radius: 9999px;
 }
+/* ---------- Navbar ---------- */
+
+.navbar {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    min-height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 60px;
+
+  background: #18181B; /* zinc-800 */
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    z-index: 9999;
+}
+
+
+/* ---------- Logo ---------- */
+
+.logo-section {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.logo {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    color: white;
+    letter-spacing: -1px;
+}
+
+.logo-subtitle {
+    font-size: 13px;
+    color: #71717a;
+}
+
+
+/* ---------- Navigation ---------- */
+
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 11px 20px;
+
+    border-radius: 12px;
+
+    color: #d4d4d8;
+    background: #18181b;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-link:hover {
+    background: #27272a;
+    color: white;
+}
+
+.nav-link.active {
+    background: #2563eb;
+    color: white;
+}
+
+.nav-link:active {
+    transform: scale(0.97);
+}
+
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        padding: 0 24px;
+    }
+
+    .logo {
+        font-size: 27px;
+    }
+
+    .logo-subtitle {
+        display: none;
+    }
+
+    .nav-link {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 500px) {
+
+    .navbar {
+        min-height: 70px;
+
+        padding: 10px 16px;
+
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 10px;
+    }
+
+    .logo-section {
+        align-items: center;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .nav-buttons {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .nav-link {
+        flex: 1;
+
+        max-width: 160px;
+
+        padding: 9px 12px;
+
+        font-size: 13px;
+    }
+}

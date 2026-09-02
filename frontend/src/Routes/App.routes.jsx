@@ -1,14 +1,17 @@
-import React from 'react'
-import { Route, Routes } from 'react-router'
-import Receiver from '../Receiver'
-import Sender from '../Sender'
-const Approutes = () => {
+import { Routes, Route, Navigate } from "react-router";
+import Sender from "../Sender";
+import Receiver from "../Receiver";
+
+const AppRoutes = () => {
   return (
     <Routes>
-        <Route path='/receiver' element={<Receiver />} /> 
-        <Route path='/sender' element={<Sender />} />
-    </Routes>
-  )
-}
+      <Route path="/" element={<Navigate to="/sender" replace />} />
 
-export default Approutes
+      <Route path="/sender" element={<Sender />} />
+
+      <Route path="/receiver" element={<Receiver />} />
+    </Routes>
+  );
+};
+
+export default AppRoutes;
